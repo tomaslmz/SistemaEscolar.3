@@ -5,7 +5,66 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import models.Professor;
+
 public class AdministradorDAO {
+	
+	public String buscarString(String tabela, String atributo, String dado) {
+		String sql = "SELECT ? FROM ? WHERE ? = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, atributo);
+			command.setString(2, tabela);
+			command.setString(3, atributo);
+			command.setString(4, dado);
+			result = command.executeQuery();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			if(result.next()) {
+				return result.getString(tabela);
+			} else {
+				return "ERRO: NADA ENCONTRADO!";
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return "ERRO: NADA ENCONTRADO!";
+		}
+	}
+	
+	public boolean registrarProfessor(Professor p) {
+		String sql = "INSERT INTO Professores(nome, senha, cpf, dataNascimento, endereco, telefone, salario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		System.out.println(p.getSalario());
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, p.getNome());
+			command.setString(2, p.getSenha());
+			command.setString(3, p.getCpf());
+			command.setString(4, p.getDataNascimento());
+			command.setString(5, p.getEndereco());
+			command.setString(6, p.getTelefone());
+			command.setFloat(7, p.getSalario());
+			command.execute();
+			id.close();
+			return true;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 	public boolean compararLogin(String user, String pswd) {
 		String sql = "SELECT usuario, senha FROM Administradores WHERE usuario = ?";
@@ -27,7 +86,7 @@ public class AdministradorDAO {
 			if(result.next()) {
 				String user2 = result.getString("usuario");
 				String pswd2 = result.getString("senha");
-				
+				id.close();
 				if(user.equals(user2) && pswd.equals(pswd2)) {
 					return true;
 				} else {

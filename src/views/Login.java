@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import views.Administrador.LoginAdministrador;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -81,8 +84,9 @@ public class Login extends JFrame {// Feito por Gabriely e Tomás
 		/**<br>Criacao do Evento relacionado a botao Administrador;*/
 		btnAdministrador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TelaAdm telaAdministrador = new TelaAdm();
-				//telaAdministrador.setVisible(true);
+				LoginAdministrador telaAdministrador = new LoginAdministrador();
+				telaAdministrador.setVisible(true);
+				dispose();
 			}
 		});
 		btnAdministrador.setBounds(162, 198, 100, 33);

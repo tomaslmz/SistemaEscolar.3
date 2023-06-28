@@ -14,7 +14,7 @@ CREATE TABLE Professores(
     dataNascimento DATE NOT NULL,
     endereco VARCHAR(100) NOT NULL,
 	telefone VARCHAR(11) NOT NULL,
-    salario FLOAT(5,2) NOT NULL);
+    salario FLOAT NOT NULL);
     
 CREATE TABLE Alunos(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import data.AdministradorDAO;
 import models.Professor;
+import views.Login;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;

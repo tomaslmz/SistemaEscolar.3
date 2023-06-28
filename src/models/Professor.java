@@ -29,12 +29,11 @@ public class Professor {
 	
 	/**<br>Agora, a classe tera os seguintes Metodos:*/
 	/**<br>Metodo construtor;*/
-	public void Professor(String nome, String senha, String cpf, Disciplina curso, String dataNascimento, String endereco, 
+	public Professor(String nome, String senha, String cpf, String dataNascimento, String endereco, 
 			String telefone, float salario) {
 		setNome(nome);
 		setSenha(senha);
 		setCpf(cpf);
-		setCurso(curso);
 		setDataNascimento(dataNascimento);
 		setEndereco(endereco);
 		setTelefone(telefone);
@@ -116,7 +115,7 @@ public class Professor {
 	
 	/**<br>Metodo para retornar a data de nascimento do professor;*/
 	public String getDataNascimento() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		return "" + sdf.format(dataNascimento.getTime());
 	}
 	
