@@ -78,6 +78,14 @@ public class TelaAdministradorProfessor extends JFrame {
 		
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.setBounds(175, 171, 89, 23);
+		btnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAdmApagarProf telaAdmApagarProf = new TelaAdmApagarProf();
+				telaAdmApagarProf.setVisible(true);
+				dispose();
+				
+			}
+		});
 		contentPane.add(btnDeletar);
 		
 		JButton btnVoltar = new JButton("Voltar");

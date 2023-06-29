@@ -48,7 +48,6 @@ public class AdministradorDAO {
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
 		
-		System.out.println(p.getSalario());
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			command.setString(1, p.getNome());
@@ -65,6 +64,22 @@ public class AdministradorDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public void apagarProfessor(int pid) {
+		String sql = "DELETE FROM Professores WHERE id = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setInt(1, pid);
+			command.execute();
+			System.out.println(command);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public int quantidadeProfessores() {
@@ -95,7 +110,7 @@ public class AdministradorDAO {
 	}
 	
 	public ArrayList<Professor> selecionarProfessores() {
-		String sql = "SELECT nome, cpf, dataNascimento, endereco, telefone, salario FROM Professores";
+		String sql = "SELECT id, nome, cpf, dataNascimento, endereco, telefone, salario FROM Professores";
 		
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
@@ -109,7 +124,7 @@ public class AdministradorDAO {
 			result = command.executeQuery();
 			
 			while(result.next()) {
-				listaProfessor.add(new Professor(result.getString("nome"), result.getString("cpf"), 
+				listaProfessor.add(new Professor(result.getInt("id"), result.getString("nome"), result.getString("cpf"), 
 					result.getString("dataNascimento"), result.getString("endereco"), result.getString("telefone"), result.getFloat("salario")));
 			}
 		} catch(SQLException e) {

@@ -7,6 +7,7 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 /**Criacao da classe professor onde iremos inserir os dados. <br>*/
 public class Professor {
+	private int id;
 	/**Aqui iremos inserir os seguintes dados do professor:<br> Nome do professor;*/
 	private String nome = "Tomás Mendoza";
 	/**<br>Senha do professor;*/
@@ -39,6 +40,18 @@ public class Professor {
 		setTelefone(telefone);
 		setSalario(salario);
 	}
+	
+	public Professor(int id, String nome, String cpf, String dataNascimento, String endereco, 
+			String telefone, float salario) {
+		setNome(nome);
+		setSenha(senha);
+		setCpf(cpf);
+		setDataNascimento(dataNascimento);
+		setEndereco(endereco);
+		setTelefone(telefone);
+		setSalario(salario);
+	}
+	
 	public Professor(String nome, String cpf, String dataNascimento, String endereco, 
 			String telefone, float salario) {
 		setNome(nome);
@@ -58,6 +71,16 @@ public class Professor {
     /**<br> Metodo sobrecarga vazio*/
     public Professor() {
     	
+    }
+
+	public void setId(int id) {
+    	if(id > -1) {
+    		this.id = id;   	
+    	}
+    }
+    
+    public int getId() {
+    	return id;
     }
     
 	/**<br>Metodo para retornar o nome do professor;*/
