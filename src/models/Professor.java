@@ -39,6 +39,16 @@ public class Professor {
 		setTelefone(telefone);
 		setSalario(salario);
 	}
+	public Professor(String nome, String cpf, String dataNascimento, String endereco, 
+			String telefone, float salario) {
+		setNome(nome);
+		setCpf(cpf);
+		setDataNascimento(dataNascimento);
+		setEndereco(endereco);
+		setTelefone(telefone);
+		setSalario(salario);
+	}
+	
     /**<br> Metodo Sobrecarga;*/    
     public Professor(String nome, String Endereco, Float salario) {
     	this.setNome(nome);
@@ -130,6 +140,17 @@ public class Professor {
 			int dia = Integer.parseInt(array[0]);
 			int mes = Integer.parseInt(array[1]);
 			int ano = Integer.parseInt(array[2]);
+			
+			data.set(ano, mes-1, dia);
+			
+			this.dataNascimento = data;
+		} else if(dataNascimento.indexOf("-") != -1) {
+			array = dataNascimento.split("-");
+			Calendar data = Calendar.getInstance();
+			
+			int dia = Integer.parseInt(array[2]);
+			int mes = Integer.parseInt(array[1]);
+			int ano = Integer.parseInt(array[0]);
 			
 			data.set(ano, mes-1, dia);
 			

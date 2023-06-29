@@ -61,6 +61,14 @@ public class TelaAdministradorProfessor extends JFrame {
 		contentPane.add(btnRegistrar);
 		
 		JButton btnVisualizar = new JButton("Visualizar");
+		btnVisualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAdmVisualizarProf telaAdmVisuProf = new TelaAdmVisualizarProf();
+				telaAdmVisuProf.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnVisualizar.setBounds(175, 103, 89, 23);
 		contentPane.add(btnVisualizar);
 		

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import models.Professor;
 
@@ -64,6 +65,58 @@ public class AdministradorDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public int quantidadeProfessores() {
+		String sql = "SELECT COUNT(*) AS 'quantidade' FROM Professores";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			result = command.executeQuery();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			if(result.next()) {
+				return result.getInt("quantidade");
+			} else {
+				return 0;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public ArrayList<Professor> selecionarProfessores() {
+		String sql = "SELECT nome, cpf, dataNascimento, endereco, telefone, salario FROM Professores";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		
+		ArrayList<Professor> listaProfessor = new ArrayList<Professor>();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			result = command.executeQuery();
+			
+			while(result.next()) {
+				listaProfessor.add(new Professor(result.getString("nome"), result.getString("cpf"), 
+					result.getString("dataNascimento"), result.getString("endereco"), result.getString("telefone"), result.getFloat("salario")));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listaProfessor;
 	}
 	
 	public boolean compararLogin(String user, String pswd) {
