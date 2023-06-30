@@ -43,6 +43,7 @@ public class Professor {
 	
 	public Professor(int id, String nome, String cpf, String dataNascimento, String endereco, 
 			String telefone, float salario) {
+		setId(id);
 		setNome(nome);
 		setSenha(senha);
 		setCpf(cpf);
@@ -74,9 +75,7 @@ public class Professor {
     }
 
 	public void setId(int id) {
-    	if(id > -1) {
-    		this.id = id;   	
-    	}
+    	this.id = id;   	
     }
     
     public int getId() {

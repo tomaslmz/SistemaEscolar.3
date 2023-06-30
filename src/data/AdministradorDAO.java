@@ -76,7 +76,6 @@ public class AdministradorDAO {
 			PreparedStatement command = id.prepareStatement(sql);
 			command.setInt(1, pid);
 			command.execute();
-			System.out.println(command);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

@@ -128,7 +128,7 @@ public class TelaAdmApagarProf extends JFrame {
 				int id = Integer.parseInt(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 0).toString());
 				
 				AdministradorDAO admDao = new AdministradorDAO();
-				admDao.apagarProfessor(id+1);
+				admDao.apagarProfessor(id);
 				
 				DefaultTableModel modelo = (DefaultTableModel) tbProfessores.getModel();
 				modelo.removeRow(tbProfessores.getSelectedRow());	
