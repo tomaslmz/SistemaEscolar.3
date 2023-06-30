@@ -73,6 +73,13 @@ public class TelaAdministradorProfessor extends JFrame {
 		contentPane.add(btnVisualizar);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaAdmAtualizarProf telaAdmAtualizarProf = new TelaAdmAtualizarProf();
+				telaAdmAtualizarProf.setVisible(true);
+				dispose();
+			}
+		});
 		btnAtualizar.setBounds(175, 137, 89, 23);
 		contentPane.add(btnAtualizar);
 		

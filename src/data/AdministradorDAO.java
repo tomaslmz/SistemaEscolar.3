@@ -42,6 +42,28 @@ public class AdministradorDAO {
 		}
 	}
 	
+	public void atualizarProfessor(Professor p) {
+		String sql = "UPDATE Professores SET nome = ?, cpf = ?, dataNascimento = ?, endereco = ?, telefone = ?, salario = ? WHERE id = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, p.getNome());
+			command.setString(2, p.getCpf());
+			command.setString(3, p.getDataNascimento());
+			command.setString(4, p.getEndereco());
+			command.setString(5, p.getTelefone());
+			command.setFloat(6, p.getSalario());
+			command.setInt(7, p.getId());
+			
+			command.executeUpdate();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	public boolean registrarProfessor(Professor p) {
 		String sql = "INSERT INTO Professores(nome, senha, cpf, dataNascimento, endereco, telefone, salario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
@@ -76,6 +98,7 @@ public class AdministradorDAO {
 			PreparedStatement command = id.prepareStatement(sql);
 			command.setInt(1, pid);
 			command.execute();
+			id.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -92,6 +115,7 @@ public class AdministradorDAO {
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			result = command.executeQuery();
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -121,11 +145,13 @@ public class AdministradorDAO {
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			result = command.executeQuery();
+
 			
 			while(result.next()) {
 				listaProfessor.add(new Professor(result.getInt("id"), result.getString("nome"), result.getString("cpf"), 
 					result.getString("dataNascimento"), result.getString("endereco"), result.getString("telefone"), result.getFloat("salario")));
 			}
+			id.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
