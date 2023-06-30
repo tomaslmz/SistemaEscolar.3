@@ -99,7 +99,7 @@ public class TelaAdmAtualizarProf extends JFrame {
 		lblNewLabel_4.setBounds(427, 141, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Salário");
+		JLabel lblNewLabel_5 = new JLabel("Salário ***");
 		lblNewLabel_5.setBounds(496, 141, 46, 14);
 		contentPane.add(lblNewLabel_5);
 		
@@ -132,34 +132,68 @@ public class TelaAdmAtualizarProf extends JFrame {
 		
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(!txtNome.getText().isEmpty() && txtCpf.getText().length() == 11 && 
-						txtDataNascimento.getText().matches("\\d{2}/\\d{2}/\\d{4}") && !txtEndereco.getText().isEmpty()
-						&& (txtTelefone.getText().length() == 11 || txtTelefone.getText().length() == 10) && Float.parseFloat(txtSalario.getText()) > 0) {
+			public void actionPerformed(ActionEvent e) {		
+				if(tbProfessores.getSelectedRow() > -1) {
+					Professor p = new Professor();
 					
-					int id = Integer.parseInt(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 0).toString());
-					Professor p = new Professor(id, txtNome.getText(), txtCpf.getText(), txtDataNascimento.getText(), 
-							txtEndereco.getText(), txtTelefone.getText(), Float.parseFloat(txtSalario.getText()));
+					p.setId(Integer.parseInt(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 0).toString()));
 					
-					AdministradorDAO admDao = new AdministradorDAO();
-					admDao.atualizarProfessor(p);
-					
-					DefaultTableModel modelo2 = (DefaultTableModel) tbProfessores.getModel();
-					
-					while(modelo2.getRowCount() > 0) {
-						modelo2.removeRow(0);
+					if(!txtNome.getText().isEmpty()) {
+						p.setNome(txtNome.getText());
+					} else {
+						p.setNome(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 1).toString());
 					}
 					
-					ArrayList<Professor> listaProfessores2 = admDao.selecionarProfessores();
-					
-					for(int i = 0; i<admDao.quantidadeProfessores(); i++) {
-						modelo2.addRow(new Object[] {listaProfessores2.get(i).getId(), listaProfessores2.get(i).getNome(), listaProfessores2.get(i).getCpf(), 
-								listaProfessores2.get(i).getDataNascimento(), listaProfessores2.get(i).getEndereco(), 
-								listaProfessores2.get(i).getTelefone(), listaProfessores2.get(i).getSalario()});
+					if(txtCpf.getText().length() == 11) {
+						p.setCpf(txtCpf.getText());
+					} else {
+						p.setCpf(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 2).toString());
 					}
 					
+					if(txtDataNascimento.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
+						p.setDataNascimento(txtDataNascimento.getText());
+					} else {
+						p.setDataNascimento(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 3).toString());
+					}
+					
+					if(!txtEndereco.getText().isEmpty()) {
+						p.setEndereco(txtEndereco.getText());
+					} else {
+						p.setEndereco(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 4).toString());
+					}
+					
+					if(txtTelefone.getText().length() == 10 || txtTelefone.getText().length() == 11) {
+						p.setTelefone(txtTelefone.getText());
+					} else {
+						p.setTelefone(tbProfessores.getValueAt(tbProfessores.getSelectedRow(), 5).toString());
+					}
+					
+					if(!txtSalario.getText().isEmpty()) {
+						if(Float.parseFloat(txtSalario.getText()) > 0) {
+							p.setSalario(Float.parseFloat(txtSalario.getText()));
+							AdministradorDAO admDao = new AdministradorDAO();
+							admDao.atualizarProfessor(p);
+							
+							DefaultTableModel modelo2 = (DefaultTableModel) tbProfessores.getModel();					
+							while(modelo2.getRowCount() > 0) {
+								modelo2.removeRow(0);
+							}
+							
+							ArrayList<Professor> listaProfessores2 = admDao.selecionarProfessores();
+							
+							for(int i = 0; i<admDao.quantidadeProfessores(); i++) {
+								modelo2.addRow(new Object[] {listaProfessores2.get(i).getId(), listaProfessores2.get(i).getNome(), listaProfessores2.get(i).getCpf(), 
+										listaProfessores2.get(i).getDataNascimento(), listaProfessores2.get(i).getEndereco(), 
+										listaProfessores2.get(i).getTelefone(), listaProfessores2.get(i).getSalario()});
+							}
+						} else {
+							JOptionPane.showMessageDialog(null, "Insira um salário válido!!");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Insira um salário válido!!");
+					}
 				} else {
-					JOptionPane.showMessageDialog(null, "Verifique se os dados estão corretos!");
+					JOptionPane.showMessageDialog(null, "Selecione alguma linha para editar!");
 				}
 			}
 		});

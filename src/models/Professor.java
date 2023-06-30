@@ -147,7 +147,7 @@ public class Professor {
 	
 	/**<br>Metodo para retornar a data de nascimento do professor;*/
 	public String getDataNascimento() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return "" + sdf.format(dataNascimento.getTime());
 	}
 	
@@ -166,7 +166,7 @@ public class Professor {
 			data.set(ano, mes-1, dia);
 			
 			this.dataNascimento = data;
-		} else if(dataNascimento.indexOf("-") != -1) {
+		} else if(dataNascimento.matches("([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))")) {
 			array = dataNascimento.split("-");
 			Calendar data = Calendar.getInstance();
 			

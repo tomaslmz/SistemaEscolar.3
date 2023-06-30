@@ -64,6 +64,35 @@ public class AdministradorDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public Float buscarSalarioProfessor(int pid) {
+		String sql = "SELECT salario FROM Professores WHERE id = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setInt(1, pid);
+			result = command.executeQuery();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		float salario = -1;
+		
+		try {
+			salario = result.getFloat("salario");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return salario;
+	}
+	
 	public boolean registrarProfessor(Professor p) {
 		String sql = "INSERT INTO Professores(nome, senha, cpf, dataNascimento, endereco, telefone, salario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
