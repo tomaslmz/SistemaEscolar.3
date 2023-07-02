@@ -88,7 +88,7 @@ public class AdministradorDAO {
 	}
 	
 	public void atualizarAluno(Aluno a) {
-		String sql = "UPDATE Alunos SET nome = ?, senha = ?, cpf = ?, dataNascimento = ?, endereco = ?, telefone = ?, responsavel = ?, telefoneResponsavel = ? WHERE id = ?";
+		String sql = "UPDATE Alunos SET nome = ?, cpf = ?, dataNascimento = ?, endereco = ?, telefone = ?, responsavel = ?, telefoneResponsavel = ? WHERE id = ?";
 		
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
@@ -96,14 +96,13 @@ public class AdministradorDAO {
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			command.setString(1, a.getNome());
-			command.setString(2, a.getSenha());
-			command.setString(3, a.getCpf());
-			command.setString(4, a.getDataNascimento());
-			command.setString(5, a.getEndereco());
-			command.setString(6, a.getTelefone());
-			command.setString(7, a.getResponsavel());
-			command.setString(8, a.getTelefone_responsavel());
-			command.setInt(9, a.getId());
+			command.setString(2, a.getCpf());
+			command.setString(3, a.getDataNascimento());
+			command.setString(4, a.getEndereco());
+			command.setString(5, a.getTelefone());
+			command.setString(6, a.getResponsavel());
+			command.setString(7, a.getTelefone_responsavel());
+			command.setInt(8, a.getId());
 			command.executeUpdate();
 			id.close();
 		} catch(SQLException e) {

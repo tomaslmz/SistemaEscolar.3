@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
@@ -71,29 +72,9 @@ public class TelaAdmApagarProf extends JFrame {
 		tbProfessores.setBounds(69, 133, 469, 160);
 		contentPane.add(tbProfessores);
 		
-		JLabel lblNewLabel = new JLabel("Nome");
-		lblNewLabel.setBounds(150, 110, 46, 14);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("CPF");
-		lblNewLabel_1.setBounds(219, 112, 46, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Data de nascimento");
-		lblNewLabel_2.setBounds(275, 112, 71, 14);
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("Endereço");
-		lblNewLabel_3.setBounds(356, 112, 46, 14);
-		contentPane.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("Telefone");
-		lblNewLabel_4.setBounds(423, 112, 46, 14);
-		contentPane.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("Salário");
-		lblNewLabel_5.setBounds(492, 112, 46, 14);
-		contentPane.add(lblNewLabel_5);
+		JScrollPane scrollPane = new JScrollPane(tbProfessores);
+		scrollPane.setBounds(0, 133, 623, 160);
+		contentPane.add(scrollPane);
 		
 		AdministradorDAO admDao = new AdministradorDAO();
 		
