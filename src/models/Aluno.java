@@ -3,11 +3,16 @@ package models;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import javax.swing.JOptionPane;
 /**Criacao da classe aluno onde irá ser inserido os dados abaixo;<br>*/
 public class Aluno {
 	/**Inicio da declaração dos dados do aluno; <br>*/
+	private int id;
 	/**<br>Nome do Aluno;*/
 	private String nome = "Gabriely Andrade"; 
+	
+	private String senha;
 	/**<br>CPF do Aluno;*/
 	private String cpf = "12345678978";
 	/**<br>Data de Nascimento de Aluno;*/
@@ -27,14 +32,37 @@ public class Aluno {
     
     /**<br> Agora a classe tera os seguintes metodos;*/
     /**<br> Metodo Construtor;*/
-    public Aluno(String nome,String CPF, String dataNascimento, String Endereco, String telefone_aluno,String responsavel,String telefone_responsavel) {
+    public Aluno(String nome, String senha, String CPF, String dataNascimento, String Endereco, String telefone_aluno,String responsavel,String telefone_responsavel) {
     	this.setNome(nome);
+    	this.setSenha(senha);
     	this.setCpf(CPF);
-    	this.setdataNascimento(dataNascimento);
-    	this.setEndereco(endereco);
+    	this.setDataNascimento(dataNascimento);
+    	this.setEndereco(Endereco);
     	this.setTelefone_aluno(telefone_aluno);
     	this.setResponsavel(responsavel);
     	this.setTelefone_responsavel(telefone_responsavel);
+    }
+    public Aluno(int id, String nome, String senha, String cpf, String dataNascimento, String endereco, String telefone_aluno, String responsavel, String telefone_responsavel) {
+    	setId(id);
+    	setNome(nome);
+    	setSenha(senha);
+    	setCpf(cpf);
+    	setDataNascimento(dataNascimento);
+    	setEndereco(endereco);
+    	setTelefone_aluno(telefone_aluno);
+    	setResponsavel(responsavel);
+    	setTelefone_responsavel(telefone_responsavel);
+    }
+    
+    public Aluno(int id, String nome, String cpf, String dataNascimento, String endereco, String telefone_aluno, String responsavel, String telefone_responsavel) {
+    	setId(id);
+    	setNome(nome);
+    	setCpf(cpf);
+    	setDataNascimento(dataNascimento);
+    	setEndereco(endereco);
+    	setTelefone_aluno(telefone_aluno);
+    	setResponsavel(responsavel);
+    	setTelefone_responsavel(telefone_responsavel);
     }
     /**<br> Metodo Sobrecarga vazio;*/
     public Aluno() {
@@ -45,6 +73,15 @@ public class Aluno {
     	this.setEndereco(endereco);
     	this.setResponsavel(responsavel);
     }
+    
+	public void setId(int id) {
+    	this.id = id;
+    }
+    
+    public int getId() {
+    	return id;
+    }
+    
     /**<br> Metodo para alterar/definir o Nome do Aluno;*/ 
     public void setNome(String nome1){
         if(nome1.length()>0) 
@@ -59,12 +96,20 @@ public class Aluno {
         return this.nome;
     }
     
+    public void setSenha(String senha) {
+    	this.senha = senha;
+    }
+    
+    public String getSenha() {
+    	return senha;
+    }
+    
     /**<br>Metodo para alterar/definir o CPF do aluno;*/
     public void setCpf(String cpf1){
         if (cpf1.length()==11) {
             this.cpf=cpf1;
         }else{
-            System.out.println("Digite um número de CPF válido!"); // ADAPTAR PARA A TELA
+            this.cpf = "NÃO TEM";// ADAPTAR PARA A TELA
         }
     }
     
@@ -74,29 +119,42 @@ public class Aluno {
     }
     
     /**<br>Metodo para alterar/definir a Data de Nascimento do Aluno;*/
-    public String setdataNascimento(String dataNascimento1) {
-		int dia, mes, ano;
-	    Calendar data = Calendar.getInstance();
-	    if (dataNascimento1.matches("\\d{2}/\\d{2}/\\d{4}")) {
-	    	String vetor[] = dataNascimento1.split("/");
-	    	dia = Integer.parseInt(vetor[0]);
-	    	mes = Integer.parseInt(vetor[1]);
-	    	ano = Integer.parseInt(vetor[2]);
-		if (dia>0 && dia<=31 && mes>0 && mes<=12 && ano>0 && ano<=2023) {
-	    	data.set(ano, mes-1, dia);
-	    	this.dataNascimento=data;
-	    	return "OK";
-		}else 
-			return"Data de Nascimento fora da formatação esperada";
-	    }
-	    return "Erro desconhecido";
-    }
-    
-    /**<br>Metodo que retorna a Data de Nascimento do Aluno;*/
-    public String getDataNascimento(){
-    	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return ""+ sdf.format(dataNascimento.getTime());
-    }
+    /**<br>Metodo para retornar a data de nascimento do aluno;*/
+	public String getDataNascimento() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return "" + sdf.format(dataNascimento.getTime());
+	}
+	
+	/**<br>Metodo para definir a data de nascimento do aluno;*/
+	public void setDataNascimento(String dataNascimento) {
+		String array[] = new String[3];
+		
+		if(dataNascimento.matches("\\d{2}/\\d{2}/\\d{4}")) {
+			array = dataNascimento.split("/");
+			Calendar data = Calendar.getInstance();
+			
+			int dia = Integer.parseInt(array[0]);
+			int mes = Integer.parseInt(array[1]);
+			int ano = Integer.parseInt(array[2]);
+			
+			data.set(ano, mes-1, dia);
+			
+			this.dataNascimento = data;
+		} else if(dataNascimento.matches("([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))")) {
+			array = dataNascimento.split("-");
+			Calendar data = Calendar.getInstance();
+			
+			int dia = Integer.parseInt(array[2]);
+			int mes = Integer.parseInt(array[1]);
+			int ano = Integer.parseInt(array[0]);
+			
+			data.set(ano, mes-1, dia);
+			
+			this.dataNascimento = data;
+		} else {
+			JOptionPane.showMessageDialog(null, "Data de nascimento inválida!");
+		}
+	}
     
     /**<br>Metodo que define/altera o Endereco do Aluno;*/
     public void setEndereco(String endereco1){
@@ -119,12 +177,9 @@ public class Aluno {
     }
     
     /**<br>Metodo que define/altera o Telefone do Aluno;*/
-	public String setTelefone_aluno(String telefonealuno) {
-        if (telefonealuno.length()==11) {
+	public void setTelefone_aluno(String telefonealuno) {
+        if (telefonealuno.length()==11 || telefonealuno.length() == 10) {
             this.telefone_aluno=telefonealuno;
-        	return "OK";
-        }else{
-            return("Digite um telefone no formato abaixo;\n 47912345678 (DDD 9 12345678)");
         }
 	}
 	
@@ -148,12 +203,9 @@ public class Aluno {
 	}
 	
     /**<br>Metodo que define/altera o Telefone do Responsavel do Aluno;*/
-	public String setTelefone_responsavel(String telefoneresponsavel) {
-        if (telefoneresponsavel.length()==11) {
-            this.telefone_aluno=telefoneresponsavel;
-        	return "OK";
-        }else{
-            return("Digite um telefone no formato abaixo;\n 47912345678 (DDD 9 12345678)");
+	public void setTelefone_responsavel(String telefoneresponsavel) {
+        if (telefoneresponsavel.length()==11 || telefoneresponsavel.length()==10) {
+            this.telefone_responsavel=telefoneresponsavel;
         }
 	}
 	

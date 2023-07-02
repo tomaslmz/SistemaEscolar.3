@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import models.Aluno;
 import models.Professor;
 
 public class AdministradorDAO {
@@ -40,6 +41,131 @@ public class AdministradorDAO {
 			e.printStackTrace();
 			return "ERRO: NADA ENCONTRADO!";
 		}
+	}
+	
+	
+	public boolean registrarAluno(Aluno a) {
+		String sql = "INSERT INTO Alunos (nome, senha, cpf, dataNascimento, endereco, telefone, responsavel, telefoneResponsavel) VALUES"
+				+ "(?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		System.out.println(a.getTelefone());
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, a.getNome());
+			command.setString(2, a.getSenha());
+			command.setString(3, a.getCpf());
+			command.setString(4, a.getDataNascimento());
+			command.setString(5, a.getEndereco());
+			command.setString(6, a.getTelefone());
+			command.setString(7, a.getResponsavel());
+			command.setString(8, a.getTelefone_responsavel());
+			command.execute();
+			id.close();
+			return true;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public void apagarAluno(int pid) {
+		String sql = "DELETE FROM Alunos WHERE id = ?";
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setInt(1, pid);
+			command.execute();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void atualizarAluno(Aluno a) {
+		String sql = "UPDATE Alunos SET nome = ?, senha = ?, cpf = ?, dataNascimento = ?, endereco = ?, telefone = ?, responsavel = ?, telefoneResponsavel = ? WHERE id = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, a.getNome());
+			command.setString(2, a.getSenha());
+			command.setString(3, a.getCpf());
+			command.setString(4, a.getDataNascimento());
+			command.setString(5, a.getEndereco());
+			command.setString(6, a.getTelefone());
+			command.setString(7, a.getResponsavel());
+			command.setString(8, a.getTelefone_responsavel());
+			command.setInt(9, a.getId());
+			command.executeUpdate();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int quantidadeAlunos() {
+		String sql = "SELECT COUNT(*) AS 'quantidade' FROM Alunos";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			result = command.executeQuery();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			if(result.next()) {
+				return result.getInt("quantidade");
+			} else {
+				return 0;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	
+	public ArrayList<Aluno> selecionarAlunos() {
+		String sql = "SELECT id, nome, cpf, dataNascimento, endereco, telefone, responsavel, telefoneResponsavel FROM Alunos";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		ArrayList<Aluno> listaAluno = new ArrayList<Aluno>();
+		
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			result = command.executeQuery();
+			
+			while(result.next()) {
+				listaAluno.add(new Aluno(result.getInt("id"), result.getString("nome"), result.getString("cpf"), 
+						result.getString("dataNascimento"), result.getString("endereco"), result.getString("telefone"), 
+						result.getString("responsavel"), result.getString("telefoneResponsavel")));
+			}
+			
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listaAluno;
 	}
 	
 	public void atualizarProfessor(Professor p) {
@@ -144,15 +270,17 @@ public class AdministradorDAO {
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			result = command.executeQuery();
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
 		try {
 			if(result.next()) {
-				return result.getInt("quantidade");
+				int quantidade = result.getInt("quantidade");
+				id.close();
+				return quantidade;
 			} else {
+				id.close();
 				return 0;
 			}
 		} catch(SQLException e) {
