@@ -122,21 +122,23 @@ public class AdministradorDAO {
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			result = command.executeQuery();
-			id.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
 		try {
 			if(result.next()) {
-				return result.getInt("quantidade");
+				int quantidade = result.getInt("quantidade");
+				id.close();
+				return quantidade;
 			} else {
+				id.close();
 				return 0;
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
-			return 0;
 		}
+		return 0;
 	}
 	
 	
