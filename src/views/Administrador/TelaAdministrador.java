@@ -2,6 +2,7 @@ package views.Administrador;
 
 import data.AdministradorDAO;
 import views.Login;
+import views.Administrador.GerenciarAluno.TelaAdministradorAluno;
 import views.Administrador.GerenciarProfessor.TelaAdministradorProfessor;
 
 import java.awt.EventQueue;
@@ -68,6 +69,13 @@ public class TelaAdministrador extends JFrame {
 		contentPane.add(btnProfessores);
 		
 		JButton btnAlunos = new JButton("Gerenciar alunos");
+		btnAlunos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaAdministradorAluno telaAdmAluno = new TelaAdministradorAluno();
+				telaAdmAluno.setVisible(true);
+				dispose();
+			}
+		});
 		btnAlunos.setBounds(232, 147, 155, 43);
 		contentPane.add(btnAlunos);
 		

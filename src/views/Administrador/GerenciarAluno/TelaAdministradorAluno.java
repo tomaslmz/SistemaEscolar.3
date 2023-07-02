@@ -63,10 +63,10 @@ public class TelaAdministradorAluno extends JFrame {
 		JButton btnVisualizar = new JButton("Visualizar");
 		btnVisualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				TelaAdmVisualizarProf telaAdmVisuProf = new TelaAdmVisualizarProf();
-//				telaAdmVisuProf.setVisible(true);
-//				dispose();
-//				
+				TelaAdmVisualizarAluno telaAdmVisuAluno = new TelaAdmVisualizarAluno();
+				telaAdmVisuAluno.setVisible(true);
+				dispose();
+				
 			}
 		});
 		btnVisualizar.setBounds(175, 103, 89, 23);
@@ -75,9 +75,9 @@ public class TelaAdministradorAluno extends JFrame {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				TelaAdmAtualizarProf telaAdmAtualizarProf = new TelaAdmAtualizarProf();
-//				telaAdmAtualizarProf.setVisible(true);
-//				dispose();
+				TelaAdmAtualizarAluno TelaAdmAtualizarAluno = new TelaAdmAtualizarAluno();
+				TelaAdmAtualizarAluno.setVisible(true);
+				dispose();
 			}
 		});
 		btnAtualizar.setBounds(175, 137, 89, 23);
@@ -87,9 +87,9 @@ public class TelaAdministradorAluno extends JFrame {
 		btnDeletar.setBounds(175, 171, 89, 23);
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				TelaAdmApagarProf telaAdmApagarProf = new TelaAdmApagarProf();
-//				telaAdmApagarProf.setVisible(true);
-//				dispose();
+				TelaAdmApagarAluno TelaAdmApagarAluno = new TelaAdmApagarAluno();
+				TelaAdmApagarAluno.setVisible(true);
+				dispose();
 				
 			}
 		});
