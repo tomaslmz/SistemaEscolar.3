@@ -7,33 +7,35 @@ import javax.swing.JOptionPane;
 
 public class Pessoa {
 	private int id;
-	/**Aqui iremos inserir os seguintes dados do professor:<br> Nome do professor;*/
+	/**Aqui iremos inserir os seguintes dados de uma pessoa:<br> Nome da pessoa;*/
 	private String nome;
-	/**<br>Senha do professor;*/
+	/**<br>Senha da pessoa;*/
 	private String senha;
-	/**<br>CPF do professor;*/
+	/**<br>CPF da pessoa;*/
 	private String cpf;
-	/**<br>Data de nascimento do professor;*/
+	/**<br>Data de nascimento da pessoa;*/
 	private Calendar dataNascimento;
-	/**<br>Endereco do professor;*/
+	/**<br>Endereco da pessoa;*/
 	private String endereco;
-	/**<br>Telefone do professor;*/
+	/**<br>Telefone da pessoa;*/
 	private String telefone;
 	
+	/**<br>Método para definir o id da pessoa;*/
 	public void setId(int id) {
     	this.id = id;   	
     }
     
+	/**<br>Método para obter o id da pessoa;*/
     public int getId() {
     	return id;
     }
     
-	/**<br>Metodo para retornar o nome do professor;*/
+	/**<br>Metodo para retornar o nome da pessoa;*/
 	public String getNome() {
 		return nome;
 	}
 	
-	/**<br>Metodo para definir o nome do professor;*/
+	/**<br>Metodo para definir o nome da pessoa;*/
 	public void setNome(String nome) {
 		if(!nome.isEmpty()) {
 			this.nome = nome;
@@ -42,12 +44,12 @@ public class Pessoa {
 		}
 	}
 	
-	/**<br>Metodo para retornar a senha do professor;*/
+	/**<br>Metodo para retornar a senha da pessoa;*/
 	public String getSenha() {
 		return senha;
 	}
 	
-	/**<br>Metodo para definir a senha do professor;*/
+	/**<br>Metodo para definir a senha da pessoa;*/
 	public void setSenha(String senha) {
 		/*if(senha.matches("?=^.{8,}$)(?=.*\\d)(?=.*[!@#$%^&*]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$") {
 		 * this.senha = senha;
@@ -55,7 +57,7 @@ public class Pessoa {
 		this.senha = senha;
 	}
 	
-	/**<br>Metodo para comparar a senha atual do professor;*/
+	/**<br>Metodo para comparar a senha atual da pessoa;*/
 	public boolean checkSenha(String senha) {
 		if(senha.equals(this.senha)) {
 			this.senha = senha;
@@ -64,25 +66,25 @@ public class Pessoa {
 		return false;
 	}
 	
-	/**<br>Metodo para retornar o CPF do professor;*/
+	/**<br>Metodo para retornar o CPF da pessoa;*/
 	public String getCpf() {
 		return cpf;
 	}
 	
-	/**<br>Metodo para definir o CPF do professor;*/
+	/**<br>Metodo para definir o CPF da pessoa;*/
 	public void setCpf(String cpf) {
 		if(cpf.length() == 11) {
 			this.cpf = cpf;
 		}
 	}
 	
-	/**<br>Metodo para retornar a data de nascimento do professor;*/
+	/**<br>Metodo para retornar a data de nascimento da pessoa;*/
 	public String getDataNascimento() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return "" + sdf.format(dataNascimento.getTime());
 	}
 	
-	/**<br>Metodo para definir a data de nascimento do professor;*/
+	/**<br>Metodo para definir a data de nascimento da pessoa;*/
 	public void setDataNascimento(String dataNascimento) {
 		String array[] = new String[3];
 		
@@ -113,22 +115,22 @@ public class Pessoa {
 		}
 	}
 	
-	/**<br>Metodo para retornar o endereco do professor;*/
+	/**<br>Metodo para retornar o endereco da pessoa;*/
 	public String getEndereco() {
 		return endereco;
 	}
 	
-	/**<br>Metodo para definir o endereco do professor;*/
+	/**<br>Metodo para definir o endereco da pessoa;*/
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	
-	/**<br>Metodo para retornar o número de telefone do professor;*/
+	/**<br>Metodo para retornar o número de telefone da pessoa;*/
 	public String getTelefone() {
 		return telefone;
 	}
 	
-	/**<br>Metodo para definir o número de telefone do professor;*/
+	/**<br>Metodo para definir o número de telefone da pessoa;*/
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
