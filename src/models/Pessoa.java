@@ -1,7 +1,6 @@
 package models;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.JOptionPane;
@@ -17,9 +16,9 @@ public class Pessoa {
 	/**<br>Data de nascimento do professor;*/
 	private Calendar dataNascimento;
 	/**<br>Endereco do professor;*/
-	private String endereco = "Rua que não existe";
+	private String endereco;
 	/**<br>Telefone do professor;*/
-	private String telefone = "4799424011";
+	private String telefone;
 	
 	public void setId(int id) {
     	this.id = id;   	

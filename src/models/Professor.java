@@ -1,14 +1,9 @@
 package models;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import javax.swing.JOptionPane;
 /**Criacao da classe professor onde iremos inserir os dados. <br>*/
 public class Professor extends Pessoa {
 	/**<br>Salario do professor;*/
-	private float salario = 9999;
+	private float salario;
 	
 	
 	/**<br>Agora, a classe tera os seguintes Metodos:*/

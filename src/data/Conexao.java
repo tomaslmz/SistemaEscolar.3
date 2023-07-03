@@ -24,7 +24,6 @@ public class Conexao {
 		
 		try {
 			conexao = DriverManager.getConnection(path, user, password);
-			System.out.println("conectado com sucesso!");
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
