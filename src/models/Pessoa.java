@@ -75,6 +75,8 @@ public class Pessoa {
 	public void setCpf(String cpf) {
 		if(cpf.length() == 11) {
 			this.cpf = cpf;
+		} else {
+			this.cpf = "NÃO TEM";
 		}
 	}
 	

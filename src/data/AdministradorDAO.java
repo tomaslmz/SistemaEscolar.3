@@ -51,8 +51,6 @@ public class AdministradorDAO {
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
 		
-		System.out.println(a.getTelefone());
-		
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
 			command.setString(1, a.getNome());
