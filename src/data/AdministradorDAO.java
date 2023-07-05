@@ -7,44 +7,87 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import models.Aluno;
+import models.Disciplina;
 import models.Professor;
 
 public class AdministradorDAO {
 	
-	public String buscarString(String tabela, String atributo, String dado) {
-		String sql = "SELECT ? FROM ? WHERE ? = ?";
+	public void registrarDisciplina(Disciplina d) {
+		String sql = "INSERT INTO Disciplinas(nome, idProfessor) VALUES ?, ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, d.getNome());
+			command.setInt(2, d.getIdProfessor());
+			command.execute();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void apagarDisciplina(int pid) {
+		String sql = "DELETE FROM Disciplinas WHERE ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setInt(1, pid);
+			command.execute();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void atualizarDisciplina(Disciplina d) {
+		String sql = "UPDATE Disciplinas SET nome = ?, idProfessor = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, d.getNome());
+			command.setInt(2, d.getIdProfessor());
+			command.executeUpdate();
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<Disciplina> listarDisciplinas() {
+		String sql = "SELECT Disciplinas.id AS 'id', Disciplinas.nome AS 'nome', Professor.nome AS 'Professor' FROM Disciplinas";
 		
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
 		
 		ResultSet result = null;
 		
+		ArrayList<Disciplina> listaDisciplinas = new ArrayList<Disciplina>();
+		
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
-			command.setString(1, atributo);
-			command.setString(2, tabela);
-			command.setString(3, atributo);
-			command.setString(4, dado);
 			result = command.executeQuery();
-			id.close();
+			while(result.next()) {
+				listaDisciplinas.add(new Disciplina(result.getInt("id"), result.getString("nome"), result.getString("")));
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
-		try {
-			if(result.next()) {
-				return result.getString(tabela);
-			} else {
-				return "ERRO: NADA ENCONTRADO!";
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-			return "ERRO: NADA ENCONTRADO!";
-		}
+		return listaDisciplinas;
 	}
 	
+
 	
-	public boolean registrarAluno(Aluno a) {
+	
+	public void registrarAluno(Aluno a) {
 		String sql = "INSERT INTO Alunos (nome, senha, cpf, dataNascimento, endereco, telefone, responsavel, telefoneResponsavel) VALUES"
 				+ "(?, ?, ?, ?, ?, ?, ?, ?)";
 		
@@ -63,10 +106,10 @@ public class AdministradorDAO {
 			command.setString(8, a.getTelefone_responsavel());
 			command.execute();
 			id.close();
-			return true;
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
-			return false;
+			
 		}
 	}
 	
@@ -218,7 +261,7 @@ public class AdministradorDAO {
 		return salario;
 	}
 	
-	public boolean registrarProfessor(Professor p) {
+	public void registrarProfessor(Professor p) {
 		String sql = "INSERT INTO Professores(nome, senha, cpf, dataNascimento, endereco, telefone, salario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		Conexao conexao = new Conexao();
@@ -235,11 +278,11 @@ public class AdministradorDAO {
 			command.setFloat(7, p.getSalario());
 			command.execute();
 			id.close();
-			return true;
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		
 	}
 	
 	public void apagarProfessor(int pid) {
@@ -338,14 +381,12 @@ public class AdministradorDAO {
 				id.close();
 				if(user.equals(user2) && pswd.equals(pswd2)) {
 					return true;
-				} else {
-					return false;
 				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		return false;
 	}
 }

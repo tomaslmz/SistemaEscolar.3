@@ -1,77 +1,74 @@
 package models;
 
 import java.util.ArrayList;
-/**Criacao da classe Cursos onde iremos inserir os dados*/
+/**Criacao da classe Disciplinas onde iremos inserir os dados*/
 public class Disciplina {
-	/**<br>Inicio da declaracao dos dados do curso*/
-	/**<br>Nome do curso*/
+	/**<br>Inicio da declaracao dos dados do Disciplina*/
+	private int id;
+	/**<br>Nome do Disciplina*/
 	private String nome;
-	/**<br>Duracao do curso*/
-	private int duracao;
-	/**<br>Aluno do curso*/
-	private Aluno aluno;
-	/**<br>Alunos do curso*/
-	private ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-	/**<br>Professor do curso*/
-	private Professor professor;
+	/**<br>ID do professor da disciplina*/
+	private int idProfessor;
 	
+	private String nomeProfessor;
+
 	/**<br>Agora, a classe tera os seguintes metodos:*/
 	/**<br>Metodo construtor*/
-	public void Curso(String nome, int duracao) {
-		this.nome = nome;
-		this.duracao = duracao;
+	public Disciplina(int id, String nome, int idProfessor) {
+		setId(id);
+		setNome(nome);
+		setIdProfessor(idProfessor);
 	}
 	
 	/**Metodo sobrecarga*/
-	public void Curso(String nome) {
-		this.nome = nome;
+	public Disciplina(String nome, int idProfessor) {
+		setNome(nome);
+		setIdProfessor(idProfessor);
 	}
-	/**<br>Definir o nome do curso*/
+	
+	public Disciplina(int id, String nome, String nomeProfessor) {
+		setId(id);
+		setNome(nome);
+		setNomeProfessor(nomeProfessor);
+	}
+	
+	public void setId(int id) {
+		if(id >= 0) {
+			this.id = id;
+		}
+	}
+	
+	public void setNomeProfessor(String nome) {
+		nomeProfessor = nome;
+	}
+	
+	public String getNomeProfessor() {
+		return nomeProfessor;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	/**<br>Definir o nome do Disciplina*/
 	public void setNome(String nome) {
 		if(!nome.isEmpty()) {
 			this.nome = nome;
 		}
 	}
 	
-	/**<br>Obter o nome do curso*/
+	/**<br>Obter o nome do Disciplina*/
 	public String getNome() {
 		return nome;
 	}
 	
-	/**<br>Definir a duracao do curso*/
-	public void setDuracao(int duracao) {
-		if(duracao > 0) {
-			this.duracao = duracao;
+	public void setIdProfessor(int id) {
+		if(id > -1) {
+			this.idProfessor = id;
 		}
 	}
 	
-	/**<br>Obter a duracao do curso*/
-	public int getDuracao() {
-		return duracao;
-	}
-	
-	/**<br>Definir o aluno do curso*/
-	public void setAluno(Aluno aluno) {
-		this.alunos.add(aluno);
-	}
-	
-	/**<br>Obter o nome dos alunos*/
-	public ArrayList<Aluno> getAlunos() {
-		return alunos;
-	}
-	
-	/**<br>Obter o nome de algum aluno*/
-	public Aluno getAlunoEspecifico(int i) {
-		return alunos.get(i);
-	}
-	
-	/**<br>Definir o professor do curso*/
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
-	}
-	
-	/**<br>Obter o nome do professor*/
-	public Professor getProfessor() {
-		return professor;
+	public int getIdProfessor() {
+		return idProfessor;
 	}
 }
