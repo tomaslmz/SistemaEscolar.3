@@ -77,6 +77,7 @@ public class AdministradorDAO {
 			while(result.next()) {
 				listaDisciplinas.add(new Disciplina(result.getInt("id"), result.getString("nome"), result.getString("")));
 			}
+			id.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
