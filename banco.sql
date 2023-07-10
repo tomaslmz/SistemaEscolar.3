@@ -27,13 +27,5 @@ CREATE TABLE Alunos(
     responsavel VARCHAR(100) NOT NULL,
     telefoneResponsavel VARCHAR(11) NOT NULL);
     
-CREATE TABLE Disciplinas(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    idAluno INT NOT NULL,
-    FOREIGN KEY (idAluno) REFERENCES Alunos(id),
-    idProfessor INT NOT NULL,
-    FOREIGN KEY (idProfessor) REFERENCES Professores(id));
-    
 INSERT INTO Administradores (usuario, senha) VALUES ("tomas", "tomas"), ("gaby", "gaby");
     

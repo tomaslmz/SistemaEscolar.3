@@ -7,85 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import models.Aluno;
-import models.Disciplina;
 import models.Professor;
 
 public class AdministradorDAO {
-	
-	public void registrarDisciplina(Disciplina d) {
-		String sql = "INSERT INTO Disciplinas(nome, idProfessor) VALUES ?, ?";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			command.setString(1, d.getNome());
-			command.setInt(2, d.getIdProfessor());
-			command.execute();
-			id.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void apagarDisciplina(int pid) {
-		String sql = "DELETE FROM Disciplinas WHERE ?";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			command.setInt(1, pid);
-			command.execute();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void atualizarDisciplina(Disciplina d) {
-		String sql = "UPDATE Disciplinas SET nome = ?, idProfessor = ?";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			command.setString(1, d.getNome());
-			command.setInt(2, d.getIdProfessor());
-			command.executeUpdate();
-			id.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public ArrayList<Disciplina> listarDisciplinas() {
-		String sql = "SELECT Disciplinas.id AS 'id', Disciplinas.nome AS 'nome', Professor.nome AS 'Professor' FROM Disciplinas";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		ResultSet result = null;
-		
-		ArrayList<Disciplina> listaDisciplinas = new ArrayList<Disciplina>();
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			result = command.executeQuery();
-			while(result.next()) {
-				listaDisciplinas.add(new Disciplina(result.getInt("id"), result.getString("nome"), result.getString("")));
-			}
-			id.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return listaDisciplinas;
-	}
-	
-
 	
 	
 	public void registrarAluno(Aluno a) {
