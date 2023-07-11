@@ -16,7 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TelaAdministrador extends JFrame {
-
+	/**
+	 * Criacao da classe TelaAdministrador onde sera entregue as funcoes para escolher;<br>
+	 * */
 	private JPanel contentPane;
 
 	/**
@@ -39,6 +41,9 @@ public class TelaAdministrador extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdministrador() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		AdministradorDAO admDAO = new AdministradorDAO();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,6 +62,9 @@ public class TelaAdministrador extends JFrame {
 		lblNewLabel_1.setBounds(126, 82, 171, 14);
 		contentPane.add(lblNewLabel_1);
 		
+		/**
+		 * As opcoes;<br>
+		 * */
 		JButton btnProfessores = new JButton("Gerenciar professores");
 		btnProfessores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -21,7 +21,10 @@ import models.Aluno;
 import models.Professor;
 
 public class TelaAdmApagarAluno extends JFrame {
-
+	/**
+	 * Criacao da classe TelaAdmApagarAluno onde sera possivel deletar um aluno do banco de dados;<br>
+	 * */
+	//Feito por Tomás
 	private JPanel contentPane;
 	private JTable tbAlunos;
 
@@ -45,6 +48,9 @@ public class TelaAdmApagarAluno extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdmApagarAluno() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 633, 436);
 		contentPane = new JPanel();
@@ -76,6 +82,10 @@ public class TelaAdmApagarAluno extends JFrame {
 		scrollPane.setBounds(0, 133, 623, 160);
 		contentPane.add(scrollPane);
 		
+		/**
+		 * Inicio da logica para pegar os dados do banco de dados;<br>
+		 * */
+		
 		AdministradorDAO admDao = new AdministradorDAO();
 		
 		DefaultTableModel modelo = (DefaultTableModel) tbAlunos.getModel();
@@ -88,6 +98,9 @@ public class TelaAdmApagarAluno extends JFrame {
 					listaAlunos.get(i).getTelefone(), listaAlunos.get(i).getResponsavel(), listaAlunos.get(i).getTelefone_responsavel()});
 		}
 		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

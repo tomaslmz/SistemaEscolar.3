@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
-
+/**Criacao da classe LoginProfessor<br>*/
 public class LoginProfessor extends JFrame {//Feito por Tomás
 
 	private JPanel contentPane;

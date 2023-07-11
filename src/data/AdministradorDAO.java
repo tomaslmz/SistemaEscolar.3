@@ -12,7 +12,7 @@ import models.Professor;
 public class AdministradorDAO {
 	
 	
-	public void registrarAluno(Aluno a) {
+	public boolean registrarAluno(Aluno a) {
 		String sql = "INSERT INTO Alunos (nome, senha, cpf, dataNascimento, endereco, telefone, responsavel, telefoneResponsavel) VALUES"
 				+ "(?, ?, ?, ?, ?, ?, ?, ?)";
 		
@@ -31,10 +31,10 @@ public class AdministradorDAO {
 			command.setString(8, a.getTelefone_responsavel());
 			command.execute();
 			id.close();
-			
+			return true;
 		} catch(SQLException e) {
 			e.printStackTrace();
-			
+			return false;
 		}
 	}
 	
@@ -186,7 +186,7 @@ public class AdministradorDAO {
 		return salario;
 	}
 	
-	public void registrarProfessor(Professor p) {
+	public boolean registrarProfessor(Professor p) {
 		String sql = "INSERT INTO Professores(nome, senha, cpf, dataNascimento, endereco, telefone, salario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		Conexao conexao = new Conexao();
@@ -203,9 +203,10 @@ public class AdministradorDAO {
 			command.setFloat(7, p.getSalario());
 			command.execute();
 			id.close();
-			
+			return true;
 		} catch(SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 		
 	}

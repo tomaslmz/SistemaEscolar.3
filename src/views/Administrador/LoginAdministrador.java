@@ -19,7 +19,9 @@ import views.Login;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-
+/**
+ * Criacao da classe LoginAdministrador onde sera inserido os dados para realizar o login;<br>
+ * */
 public class LoginAdministrador extends JFrame {
 
 	private JPanel contentPane;
@@ -46,10 +48,14 @@ public class LoginAdministrador extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginAdministrador() {
-		
+		/**
+		 * Ligacao com o banco de dados;<br>
+		 * */
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
-		
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
