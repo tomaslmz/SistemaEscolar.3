@@ -55,7 +55,7 @@ public class TelaAdmAtualizarAluno extends JFrame {
 	 */
 	public TelaAdmAtualizarAluno() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 633, 436);
+		setBounds(100, 100, 1000, 436);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -82,7 +82,7 @@ public class TelaAdmAtualizarAluno extends JFrame {
 		contentPane.add(tbAlunos);
 		
 		JScrollPane scrollPane = new JScrollPane(tbAlunos);
-		scrollPane.setBounds(0, 133, 623, 160);
+		scrollPane.setBounds(10, 133, 964, 160);
 		contentPane.add(scrollPane);
 		
 		AdministradorDAO admDao = new AdministradorDAO();
@@ -105,7 +105,7 @@ public class TelaAdmAtualizarAluno extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(313, 352, 89, 23);
+		btnVoltar.setBounds(491, 351, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JLabel lblId = new JLabel("ID");
@@ -183,69 +183,69 @@ public class TelaAdmAtualizarAluno extends JFrame {
 				}
 			}
 		});
-		btnAtualizar.setBounds(176, 352, 109, 23);
+		btnAtualizar.setBounds(354, 351, 109, 23);
 		contentPane.add(btnAtualizar);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(23, 29, 114, 21);
+		txtNome.setBounds(134, 30, 114, 21);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
 		txtCpf = new JTextField();
-		txtCpf.setBounds(173, 29, 114, 21);
+		txtCpf.setBounds(287, 30, 114, 21);
 		contentPane.add(txtCpf);
 		txtCpf.setColumns(10);
 		
 		txtDataNascimento = new JTextField();
-		txtDataNascimento.setBounds(313, 29, 114, 21);
+		txtDataNascimento.setBounds(427, 30, 114, 21);
 		contentPane.add(txtDataNascimento);
 		txtDataNascimento.setColumns(10);
 		
 		txtEndereco = new JTextField();
-		txtEndereco.setBounds(23, 84, 114, 21);
+		txtEndereco.setBounds(134, 85, 114, 21);
 		contentPane.add(txtEndereco);
 		txtEndereco.setColumns(10);
 		
 		txtTelefone = new JTextField();
-		txtTelefone.setBounds(173, 84, 114, 21);
+		txtTelefone.setBounds(284, 85, 114, 21);
 		contentPane.add(txtTelefone);
 		txtTelefone.setColumns(10);
 		
 		txtResponsavel = new JTextField();
-		txtResponsavel.setBounds(313, 84, 114, 21);
+		txtResponsavel.setBounds(424, 85, 114, 21);
 		contentPane.add(txtResponsavel);
 		txtResponsavel.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(51, 0, 58, 17);
+		lblNome.setBounds(134, 11, 58, 17);
 		contentPane.add(lblNome);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(202, 0, 58, 17);
+		lblCpf.setBounds(287, 11, 58, 17);
 		contentPane.add(lblCpf);
 		
 		JLabel lblDataDeNascimento = new JLabel("Data de nascimento");
-		lblDataDeNascimento.setBounds(313, 0, 127, 17);
+		lblDataDeNascimento.setBounds(427, 11, 127, 17);
 		contentPane.add(lblDataDeNascimento);
 		
 		JLabel lblEndereo = new JLabel("Endereço");
-		lblEndereo.setBounds(51, 62, 58, 17);
+		lblEndereo.setBounds(134, 62, 58, 17);
 		contentPane.add(lblEndereo);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(202, 62, 58, 17);
+		lblTelefone.setBounds(287, 62, 58, 17);
 		contentPane.add(lblTelefone);
 		
 		JLabel lbResponsavel = new JLabel("Responsável");
-		lbResponsavel.setBounds(323, 62, 104, 17);
+		lbResponsavel.setBounds(427, 62, 104, 17);
 		contentPane.add(lbResponsavel);
 		
 		JLabel lblTelefoneResponsavel = new JLabel("Telefone Responsável");
-		lblTelefoneResponsavel.setBounds(472, 0, 139, 17);
+		lblTelefoneResponsavel.setBounds(596, 11, 139, 17);
 		contentPane.add(lblTelefoneResponsavel);
 		
 		txtTelefoneResponsavel = new JTextField();
-		txtTelefoneResponsavel.setBounds(482, 29, 114, 21);
+		txtTelefoneResponsavel.setBounds(596, 30, 114, 21);
 		contentPane.add(txtTelefoneResponsavel);
 		txtTelefoneResponsavel.setColumns(10);
 	}

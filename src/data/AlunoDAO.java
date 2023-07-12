@@ -11,7 +11,7 @@ import models.Aluno;
 public class AlunoDAO {
 
 	public ArrayList<Aluno> listarAlunos(Aluno a){
-		String mySql = "select nome,cpf,dataNascimento,endereco,telefoneAluno,nomeResponsavel,telefoneResponsavel,curso from Aluno where nome = ?";
+		String mySql = "select nome,cpf,dataNascimento,endereco,telefone,Responsavel,telefoneResponsavel from Alunos where nome = ?";
 		//Conectar ao Banco de Dados
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
@@ -27,17 +27,24 @@ public class AlunoDAO {
 			//Pegar todos os valores da primeira linha...
 			while(resultadoSelect.next()) {
 				pRead.setNome(resultadoSelect.getString("nome"));
-				pRead.setNome(resultadoSelect.getString("cpf"));
-				pRead.setNome(resultadoSelect.getString("dataNascimento"));
-				pRead.setNome(resultadoSelect.getString("endereco"));
-				pRead.setNome(resultadoSelect.getString("telefone"));
-				pRead.setNome(resultadoSelect.getString("responsavel"));
-				pRead.setNome(resultadoSelect.getString("telefoneResponsavel"));
+				//System.out.println(resultadoSelect.getString("nome"));
+				pRead.setCpf(resultadoSelect.getString("cpf"));
+				//System.out.println(resultadoSelect.getString("cpf"));
+				pRead.setDataNascimento(resultadoSelect.getString("dataNascimento"));
+				//System.out.println(resultadoSelect.getString("dataNascimento"));
+				pRead.setEndereco(resultadoSelect.getString("endereco"));
+				//System.out.println(resultadoSelect.getString("endereco"));
+				pRead.setTelefone(resultadoSelect.getString("telefone"));
+				//System.out.println(resultadoSelect.getString("telefone"));
+				pRead.setResponsavel(resultadoSelect.getString("responsavel"));
+				//System.out.println(resultadoSelect.getString("responsavel"));
+				//System.out.println(resultadoSelect.getString("telefoneResponsavel"));
 				informacoesAluno.add(pRead);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("Erro"+ e);
 		}
 		
 		return null;

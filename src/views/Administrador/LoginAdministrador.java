@@ -65,7 +65,7 @@ public class LoginAdministrador extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Usuário:");
-		lblNewLabel.setBounds(126, 67, 34, 26);
+		lblNewLabel.setBounds(114, 67, 46, 26);
 		contentPane.add(lblNewLabel);
 		
 		txtUser = new JTextField();

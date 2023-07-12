@@ -55,7 +55,7 @@ public class TelaAdministrador extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Olá! Seja bem-vindo ao sistema.");
-		lblNewLabel.setBounds(115, 11, 196, 14);
+		lblNewLabel.setBounds(126, 11, 196, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Escolha a função que deseja usar:");

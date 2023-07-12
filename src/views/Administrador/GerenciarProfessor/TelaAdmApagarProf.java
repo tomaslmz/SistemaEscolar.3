@@ -45,7 +45,7 @@ public class TelaAdmApagarProf extends JFrame {
 	 */
 	public TelaAdmApagarProf() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 633, 436);
+		setBounds(100, 100, 1000, 436);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -73,7 +73,7 @@ public class TelaAdmApagarProf extends JFrame {
 		contentPane.add(tbProfessores);
 		
 		JScrollPane scrollPane = new JScrollPane(tbProfessores);
-		scrollPane.setBounds(0, 133, 623, 160);
+		scrollPane.setBounds(0, 133, 974, 160);
 		contentPane.add(scrollPane);
 		
 		AdministradorDAO admDao = new AdministradorDAO();
@@ -96,11 +96,11 @@ public class TelaAdmApagarProf extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(313, 352, 89, 23);
+		btnVoltar.setBounds(485, 350, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JLabel lblId = new JLabel("ID");
-		lblId.setBounds(68, 110, 70, 15);
+		lblId.setBounds(10, 110, 70, 15);
 		contentPane.add(lblId);
 		
 		JButton btnApagar = new JButton("Apagar");
@@ -115,7 +115,7 @@ public class TelaAdmApagarProf extends JFrame {
 				modelo.removeRow(tbProfessores.getSelectedRow());	
 			}
 		});
-		btnApagar.setBounds(176, 352, 109, 23);
+		btnApagar.setBounds(348, 350, 109, 23);
 		contentPane.add(btnApagar);
 	}
 }

@@ -45,7 +45,7 @@ public class TelaAdmVisualizarAluno extends JFrame {
 	 */
 	public TelaAdmVisualizarAluno() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 633, 436);
+		setBounds(100, 100, 1000, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -75,7 +75,7 @@ public class TelaAdmVisualizarAluno extends JFrame {
 		contentPane.add(tbAlunos);
 		
 		JScrollPane scrollPane = new JScrollPane(tbAlunos);
-		scrollPane.setBounds(0, 133, 623, 160);
+		scrollPane.setBounds(10, 133, 964, 160);
 		contentPane.add(scrollPane);
 		
 		AdministradorDAO admDao = new AdministradorDAO();
@@ -98,7 +98,7 @@ public class TelaAdmVisualizarAluno extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(257, 349, 89, 23);
+		btnVoltar.setBounds(435, 349, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		

@@ -52,7 +52,7 @@ public class TelaAdmApagarAluno extends JFrame {
 		 * Configuracoes da tela;<br>
 		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 633, 436);
+		setBounds(100, 100, 1000, 436);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -79,7 +79,7 @@ public class TelaAdmApagarAluno extends JFrame {
 		contentPane.add(tbAlunos);
 		
 		JScrollPane scrollPane = new JScrollPane(tbAlunos);
-		scrollPane.setBounds(0, 133, 623, 160);
+		scrollPane.setBounds(10, 133, 964, 160);
 		contentPane.add(scrollPane);
 		
 		/**
@@ -109,7 +109,7 @@ public class TelaAdmApagarAluno extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(313, 352, 89, 23);
+		btnVoltar.setBounds(495, 351, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JButton btnApagar = new JButton("Apagar");
@@ -126,7 +126,7 @@ public class TelaAdmApagarAluno extends JFrame {
 				}
 			}
 		});
-		btnApagar.setBounds(176, 352, 109, 23);
+		btnApagar.setBounds(358, 351, 109, 23);
 		contentPane.add(btnApagar);
 	}
 }
