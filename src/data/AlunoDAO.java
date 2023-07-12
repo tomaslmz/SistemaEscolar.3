@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import models.Aluno;
 
 public class AlunoDAO {
@@ -42,5 +44,43 @@ public class AlunoDAO {
 		
 		return null;
 		
+	}
+	
+	public static boolean compararLogin(Aluno a) {
+		String sql = "SELECT nome, senha FROM Alunos WHERE nome = ? AND senha = ?";
+		
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		
+		ResultSet result = null;
+		
+		try {
+			PreparedStatement command = id.prepareStatement(sql);
+			command.setString(1, a.getNome());
+			command.setString(2, a.getSenha());
+			result = command.executeQuery();
+		} catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro ao procurar o aluno!");
+			return false;
+		}
+		
+		try {
+			if(result.next()) {
+				if(result.getString("nome").equals(a.getNome())) {
+					if(result.getString("senha").equals(a.getSenha())) {
+						return true;
+					} else {
+						JOptionPane.showMessageDialog(null, "Senha incorreta!");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Nome de usuário não existe!");
+					return false;
+				}
+			}
+		} catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Não foi possível encontrar o aluno!");
+			return false;
+		}
+		return false;
 	}
 }
