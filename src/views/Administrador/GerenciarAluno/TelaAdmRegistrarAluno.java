@@ -128,7 +128,7 @@ public class TelaAdmRegistrarAluno extends JFrame {
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String senha = new String(pswdSenha.getPassword());
-				if(!txtNome.getText().isEmpty() && !senha.isEmpty() && (txtCpf.getText().length() == 11 || txtCpf.getText().isEmpty()) && 
+				if(!txtNome.getText().isEmpty() && !senha.isEmpty() && txtCpf.getText().length() == 11 && 
 						txtDataNascimento.getText().matches("\\d{2}/\\d{2}/\\d{4}") && !txtEndereco.getText().isEmpty()
 						&& (txtTelefone.getText().length() == 11 || txtTelefone.getText().length() == 10) && !txtResponsavel.getText().isEmpty() && (txtTelefoneResponsavel.getText().length() == 10 || txtTelefoneResponsavel.getText().length() == 11)) {
 					Aluno aluno = new Aluno(txtNome.getText(), senha, txtCpf.getText(), txtDataNascimento.getText(), txtEndereco.getText(), txtTelefone.getText(), txtResponsavel.getText(), txtTelefoneResponsavel.getText());

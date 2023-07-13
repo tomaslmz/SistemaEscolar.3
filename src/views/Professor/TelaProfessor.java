@@ -14,6 +14,7 @@ import data.AlunoDAO;
 import data.ProfessorDAO;
 import models.Aluno;
 import models.Professor;
+import views.Login;
 import views.LoginAluno;
 import views.Administrador.GerenciarProfessor.TelaAdministradorProfessor;
 
@@ -80,7 +81,7 @@ public class TelaProfessor extends JFrame {
 		contentPane.add(tbProfessores);
 		
 		JScrollPane scrollPane = new JScrollPane(tbProfessores);
-		scrollPane.setBounds(0, 133, 974, 160);
+		scrollPane.setBounds(16, 131, 974, 160);
 		contentPane.add(scrollPane);
 		
 		ProfessorDAO profDao = new ProfessorDAO();
@@ -95,11 +96,11 @@ public class TelaProfessor extends JFrame {
 					listaProfessores.get(i).getTelefone(), listaProfessores.get(i).getSalario()});
 		}
 		
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new JButton("Sair");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaAdministradorProfessor telaAdmProf = new TelaAdministradorProfessor();
-				telaAdmProf.setVisible(true);
+				Login telaLogin = new Login();
+				telaLogin.setVisible(true);
 				dispose();
 			}
 		});

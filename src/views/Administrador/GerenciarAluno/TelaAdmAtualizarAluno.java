@@ -91,7 +91,7 @@ public class TelaAdmAtualizarAluno extends JFrame {
 		
 		ArrayList<Aluno> listaAlunos = admDao.selecionarAlunos();
 		
-		for(int i = 0; i<admDao.quantidadeAlunos(); i++) {
+		for(int i = 0; i<listaAlunos.size(); i++) {
 			modelo.addRow(new Object[] {listaAlunos.get(i).getId(), listaAlunos.get(i).getNome(), listaAlunos.get(i).getCpf(), 
 					listaAlunos.get(i).getDataNascimento(), listaAlunos.get(i).getEndereco(), 
 					listaAlunos.get(i).getTelefone(), listaAlunos.get(i).getResponsavel(), listaAlunos.get(i).getTelefone_responsavel()});
@@ -172,7 +172,7 @@ public class TelaAdmAtualizarAluno extends JFrame {
 					
 					ArrayList<Aluno> listaAlunos2 = admDao.selecionarAlunos();
 					
-					for(int i = 0; i<admDao.quantidadeAlunos(); i++) {
+					for(int i = 0; i<listaAlunos2.size(); i++) {
 						modelo2.addRow(new Object[] {listaAlunos2.get(i).getId(), listaAlunos2.get(i).getNome(), listaAlunos2.get(i).getCpf(), 
 								listaAlunos2.get(i).getDataNascimento(), listaAlunos2.get(i).getEndereco(), 
 								listaAlunos2.get(i).getTelefone(), listaAlunos2.get(i).getResponsavel(), listaAlunos2.get(i).getTelefone_responsavel()});

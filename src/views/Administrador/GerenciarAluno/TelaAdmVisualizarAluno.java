@@ -84,7 +84,7 @@ public class TelaAdmVisualizarAluno extends JFrame {
 		
 		ArrayList<Aluno> listaAlunos = admDao.selecionarAlunos();
 		
-		for(int i = 0; i<admDao.quantidadeAlunos(); i++) {
+		for(int i = 0; i<listaAlunos.size(); i++) {
 			modelo.addRow(new Object[] {listaAlunos.get(i).getNome(), listaAlunos.get(i).getCpf(), 
 					listaAlunos.get(i).getDataNascimento(), listaAlunos.get(i).getEndereco(), 
 					listaAlunos.get(i).getTelefone(), listaAlunos.get(i).getResponsavel(), listaAlunos.get(i).getTelefone_responsavel()});

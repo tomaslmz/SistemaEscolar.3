@@ -82,7 +82,7 @@ public class TelaAdmApagarProf extends JFrame {
 		
 		ArrayList<Professor> listaProfessores = admDao.selecionarProfessores();
 		
-		for(int i = 0; i<admDao.quantidadeProfessores(); i++) {
+		for(int i = 0; i<listaProfessores.size(); i++) {
 			modelo.addRow(new Object[] {listaProfessores.get(i).getId(), listaProfessores.get(i).getNome(), listaProfessores.get(i).getCpf(), 
 					listaProfessores.get(i).getDataNascimento(), listaProfessores.get(i).getEndereco(), 
 					listaProfessores.get(i).getTelefone(), listaProfessores.get(i).getSalario()});

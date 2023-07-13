@@ -8,10 +8,16 @@ import java.util.ArrayList;
 
 import models.Aluno;
 import models.Professor;
+//Feito por Tomás
 
+/**
+ * Criacao da classe AdministradorDAO onde tera os metodos com integracao ao banco de dados;<br>
+ * */
 public class AdministradorDAO {
 	
-	
+	/**
+	 * Metodo para criar um aluno<br>
+	 * */
 	public boolean registrarAluno(Aluno a) {
 		String sql = "INSERT INTO Alunos (nome, senha, cpf, dataNascimento, endereco, telefone, responsavel, telefoneResponsavel) VALUES"
 				+ "(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -38,6 +44,10 @@ public class AdministradorDAO {
 		}
 	}
 	
+	/**
+	 * Metodo para apagar o aluno;<br>
+	 * */
+	
 	public void apagarAluno(int pid) {
 		String sql = "DELETE FROM Alunos WHERE id = ?";
 		Conexao conexao = new Conexao();
@@ -52,6 +62,10 @@ public class AdministradorDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Metodo para atualizar um aluno;<br>
+	 * */
 	
 	public void atualizarAluno(Aluno a) {
 		String sql = "UPDATE Alunos SET nome = ?, cpf = ?, dataNascimento = ?, endereco = ?, telefone = ?, responsavel = ?, telefoneResponsavel = ? WHERE id = ?";
@@ -76,36 +90,9 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public int quantidadeAlunos() {
-		String sql = "SELECT COUNT(*) AS 'quantidade' FROM Alunos";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		ResultSet result = null;
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			result = command.executeQuery();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			if(result.next()) {
-				int quantidade = result.getInt("quantidade");
-				id.close();
-				return quantidade;
-			} else {
-				id.close();
-				return 0;
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-	
+	/**
+	 * Metodo para selecionar os alunos;<br>
+	 * */
 	
 	public ArrayList<Aluno> selecionarAlunos() {
 		String sql = "SELECT id, nome, cpf, dataNascimento, endereco, telefone, responsavel, telefoneResponsavel FROM Alunos";
@@ -135,6 +122,10 @@ public class AdministradorDAO {
 		return listaAluno;
 	}
 	
+	
+	/**
+	 * Metodo para atualizar os professores;<br>
+	 * */
 	public void atualizarProfessor(Professor p) {
 		String sql = "UPDATE Professores SET nome = ?, cpf = ?, dataNascimento = ?, endereco = ?, telefone = ?, salario = ? WHERE id = ?";
 		
@@ -158,33 +149,9 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public Float buscarSalarioProfessor(int pid) {
-		String sql = "SELECT salario FROM Professores WHERE id = ?";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		ResultSet result = null;
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			command.setInt(1, pid);
-			result = command.executeQuery();
-			id.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		float salario = -1;
-		
-		try {
-			salario = result.getFloat("salario");
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return salario;
-	}
+	/**
+	 * Metodo para registrar o professor;<br>
+	 * */
 	
 	public boolean registrarProfessor(Professor p) {
 		String sql = "INSERT INTO Professores(nome, senha, cpf, dataNascimento, endereco, telefone, salario) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -211,6 +178,10 @@ public class AdministradorDAO {
 		
 	}
 	
+	/**
+	 * Metodo para apagar o professor;<br>
+	 * */
+	
 	public void apagarProfessor(int pid) {
 		String sql = "DELETE FROM Professores WHERE id = ?";
 		
@@ -227,35 +198,10 @@ public class AdministradorDAO {
 		}
 	}
 	
-	public int quantidadeProfessores() {
-		String sql = "SELECT COUNT(*) AS 'quantidade' FROM Professores";
-		
-		Conexao conexao = new Conexao();
-		Connection id = conexao.conectar();
-		
-		ResultSet result = null;
-		
-		try {
-			PreparedStatement command = id.prepareStatement(sql);
-			result = command.executeQuery();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			if(result.next()) {
-				int quantidade = result.getInt("quantidade");
-				id.close();
-				return quantidade;
-			} else {
-				id.close();
-				return 0;
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
+	
+	/**
+	 * Metodo para selecionar os professores;<br>
+	 * */
 	
 	public ArrayList<Professor> selecionarProfessores() {
 		String sql = "SELECT id, nome, cpf, dataNascimento, endereco, telefone, salario FROM Professores";
@@ -283,6 +229,10 @@ public class AdministradorDAO {
 		
 		return listaProfessor;
 	}
+	
+	/**
+	 * Metodo para comparar os logins;<br>
+	 * */
 	
 	public boolean compararLogin(String user, String pswd) {
 		String sql = "SELECT usuario, senha FROM Administradores WHERE usuario = ?";
