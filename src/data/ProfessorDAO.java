@@ -4,13 +4,43 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import models.Aluno;
 import models.Professor;
 
 public class ProfessorDAO {
-	public static boolean compararLogin(Professor p) {
+	
+	public ArrayList<Professor> listarProfessores(){
+		String mySql = "SELECT id, nome, cpf, dataNascimento, endereco, telefone, salario FROM Professores";
+		//Conectar ao Banco de Dados
+		Conexao conexao = new Conexao();
+		Connection id = conexao.conectar();
+		//Comando SQL
+
+		ArrayList<Professor> listaProfessor = new ArrayList<Professor>();
+		ResultSet result = null;
+		
+		try {
+			PreparedStatement command = id.prepareStatement(mySql);
+			result = command.executeQuery();
+
+			
+			while(result.next()) {
+				listaProfessor.add(new Professor(result.getInt("id"), result.getString("nome"), result.getString("cpf"), 
+					result.getString("dataNascimento"), result.getString("endereco"), result.getString("telefone"), result.getFloat("salario")));
+			}
+			id.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listaProfessor;
+	}
+	
+	public boolean compararLogin(Professor p) {
 		String sql = "SELECT cpf, senha FROM professors WHERE cpf = ? AND senha = ?";
 		
 		Conexao conexao = new Conexao();

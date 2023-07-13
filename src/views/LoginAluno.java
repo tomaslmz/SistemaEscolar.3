@@ -6,7 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import data.AlunoDAO;
 import models.Aluno;
+import views.Aluno.TelaAluno;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -74,16 +76,19 @@ public class LoginAluno extends JFrame { // Feito por Gabriely Andrade
 		contentPane.add(txCPF);
 		txCPF.setColumns(10);
 		
+		AlunoDAO alunoDao = new AlunoDAO();
 		/**<br>Criacao do JButton para realizar o login*/
 		JButton btEntrar = new JButton("Logar");
 		/**<br>Criacao do Evento relacionado a botao Entrar;*/
 		btEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txCPF.equals(aluno.getCpf()) && passwordAluno.toString().equals(aluno.getDataNascimento())) {
-					TelaAluno telaEstudante = new TelaAluno();
-					telaEstudante.setVisible(true);
-				}else {
-					JOptionPane.showMessageDialog(null, "Senha incorreta");
+				String senha = new String(passwordAluno.getPassword());
+				aluno.setCpf(txCPF.getText());
+				aluno.setSenha(senha);
+				if(alunoDao.compararLogin(aluno)) {
+					TelaAluno telaAluno = new TelaAluno();
+					telaAluno.setVisible(true);
+					dispose();
 				}
 			}
 		});
@@ -97,6 +102,7 @@ public class LoginAluno extends JFrame { // Feito por Gabriely Andrade
 			public void actionPerformed(ActionEvent e) {
 				Login telaLogin = new Login();
 				telaLogin.setVisible(true);
+				dispose();
 			}
 		});
 		btVoltar.setBounds(138, 174, 89, 23);

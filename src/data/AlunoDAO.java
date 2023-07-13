@@ -12,19 +12,19 @@ import models.Aluno;
 
 public class AlunoDAO {
 
-	public ArrayList<Aluno> listarAlunos(Aluno a){
-		String mySql = "select nome,cpf,dataNascimento,endereco,telefone,Responsavel,telefoneResponsavel from Alunos where nome = ?";
+	public ArrayList<Aluno> listarAlunos(){
+		String mySql = "select nome,cpf,dataNascimento,endereco,telefone,Responsavel,telefoneResponsavel from Alunos";
 		//Conectar ao Banco de Dados
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
 		//Comando SQL
+		ArrayList<Aluno>informacoesAluno = new ArrayList<Aluno>();
 		try {
-			PreparedStatement execucao = id.prepareStatement(mySql);
-			execucao.setString(1, a.getNome());;
+			PreparedStatement execucao = id.prepareStatement(mySql);;
 			//Executa o SELECTe devolve o resultado, guarda no objeto "resultado"
 			ResultSet resultadoSelect = execucao.executeQuery();
 			
-			ArrayList<Aluno>informacoesAluno = new ArrayList<Aluno>();
+			
 			Aluno pRead = new Aluno();
 			//Pegar todos os valores da primeira linha...
 			while(resultadoSelect.next()) {
@@ -49,12 +49,12 @@ public class AlunoDAO {
 			System.out.println("Erro"+ e);
 		}
 		
-		return null;
+		return informacoesAluno;
 		
 	}
 	
-	public static boolean compararLogin(Aluno a) {
-		String sql = "SELECT nome, senha FROM Alunos WHERE nome = ? AND senha = ?";
+	public boolean compararLogin(Aluno a) {
+		String sql = "SELECT cpf, senha FROM Alunos WHERE cpf = ? AND senha = ?";
 		
 		Conexao conexao = new Conexao();
 		Connection id = conexao.conectar();
@@ -63,7 +63,7 @@ public class AlunoDAO {
 		
 		try {
 			PreparedStatement command = id.prepareStatement(sql);
-			command.setString(1, a.getNome());
+			command.setString(1, a.getCpf());
 			command.setString(2, a.getSenha());
 			result = command.executeQuery();
 		} catch(SQLException e) {
@@ -73,7 +73,7 @@ public class AlunoDAO {
 		
 		try {
 			if(result.next()) {
-				if(result.getString("nome").equals(a.getNome())) {
+				if(result.getString("cpf").equals(a.getCpf())) {
 					if(result.getString("senha").equals(a.getSenha())) {
 						return true;
 					} else {

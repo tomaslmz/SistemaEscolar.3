@@ -9,11 +9,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import dados.ProdutoDados;
 import data.AdministradorDAO;
 import data.AlunoDAO;
-import model.Produto;
 import models.Aluno;
+import views.LoginAluno;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
@@ -83,28 +82,32 @@ public class TelaAluno extends JFrame {
 		contentPane.add(scrollPane);
 		
 		AlunoDAO alunoDAO = new AlunoDAO();
-		Aluno aa = new Aluno();
-		aa.setNome("Joaquim");
-		alunoDAO.listarAlunos(aa);
 		
 		
 		//Puxar a conexao
 		//Connection id_conexao = conexao.conectar();
 		AlunoDAO conectarDados = new AlunoDAO();
-		conectarDados.listarAlunos(aa);		
+		ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
+		
+		listaAlunos = conectarDados.listarAlunos();		
 		
 		DefaultTableModel modelo = (DefaultTableModel) tbAlunos.getModel();
 		
-		modelo.addRow(new Object[] {aa.getNome(),aa.getCpf(),aa.getDataNascimento(),aa.getEndereco(),aa.getTelefone(),aa.getResponsavel(),aa.getTelefone_responsavel()});
+
+//			modelo.addRow(new Object[] {aluno.getNome(),aluno.getCpf(),aluno.getDataNascimento(),aluno.getEndereco(),aluno.getTelefone(),aluno.getResponsavel(),aluno.getTelefone_responsavel()});
+		for(int i = 0; i<listaAlunos.size(); i++) {
+			modelo.addRow(new Object[] {listaAlunos.get(i).getNome(), listaAlunos.get(i).getCpf(), listaAlunos.get(i).getDataNascimento(), listaAlunos.get(i).getEndereco(), listaAlunos.get(i).getTelefone(), listaAlunos.get(i).getResponsavel(), listaAlunos.get(i).getTelefone_responsavel()});
+		}
+		
 		tbAlunos.setModel(modelo);
 		
 		
 		
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new JButton("Sair");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaAluno telaAluno = new TelaAluno();
-				telaAluno.setVisible(true);
+			LoginAluno telaLoginAluno = new LoginAluno();
+				telaLoginAluno.setVisible(true);
 				dispose();
 			}
 		});
