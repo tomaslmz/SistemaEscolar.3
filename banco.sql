@@ -20,7 +20,7 @@ CREATE TABLE Alunos(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     senha VARCHAR(30) NOT NULL,
-    cpf VARCHAR(11),
+    cpf VARCHAR(11) NOT NULL,
     dataNascimento DATE NOT NULL,
     endereco VARCHAR(100) NOT NULL,
 	telefone VARCHAR(11) NOT NULL,
