@@ -37,6 +37,9 @@ public class TelaAdministradorAluno extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdministradorAluno() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,6 +51,10 @@ public class TelaAdministradorAluno extends JFrame {
 		JLabel lblNewLabel = new JLabel("Como deseja gerenciar os alunos?");
 		lblNewLabel.setBounds(118, 11, 211, 14);
 		contentPane.add(lblNewLabel);
+		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.addActionListener(new ActionListener() {

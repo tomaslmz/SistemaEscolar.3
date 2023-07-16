@@ -11,7 +11,14 @@ import javax.swing.JOptionPane;
 import models.Aluno;
 import models.Professor;
 
+/**
+* Criacao da classe ProfessorDAO;<br>
+**/
 public class ProfessorDAO {
+	
+	/**
+	 * Metodo para listar os professores;<br>
+	 * */
 	
 	public ArrayList<Professor> listarProfessores(){
 		String mySql = "SELECT id, nome, cpf, dataNascimento, endereco, telefone, salario FROM Professores";
@@ -22,7 +29,9 @@ public class ProfessorDAO {
 
 		ArrayList<Professor> listaProfessor = new ArrayList<Professor>();
 		ResultSet result = null;
-		
+		/**
+		 * Tratamento de exceções
+		 */
 		try {
 			PreparedStatement command = id.prepareStatement(mySql);
 			result = command.executeQuery();
@@ -40,6 +49,9 @@ public class ProfessorDAO {
 		return listaProfessor;
 	}
 	
+	/**
+	 * Metodo para comparar o login;<br>
+	 * */
 	public boolean compararLogin(Professor p) {
 		String sql = "SELECT cpf, senha FROM professors WHERE cpf = ? AND senha = ?";
 		

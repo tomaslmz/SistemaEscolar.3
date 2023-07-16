@@ -48,6 +48,9 @@ public class TelaAdmRegistrarProf extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdmRegistrarProf() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -121,6 +124,10 @@ public class TelaAdmRegistrarProf extends JFrame {
 		pswdSenha = new JPasswordField();
 		pswdSenha.setBounds(90, 67, 86, 17);
 		contentPane.add(pswdSenha);
+		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.addActionListener(new ActionListener() {

@@ -10,8 +10,15 @@ import javax.swing.JOptionPane;
 
 import models.Aluno;
 
-public class AlunoDAO {
+/**
+* Criacao da classe AlunoDAO;<br>
+**/
 
+public class AlunoDAO {
+	
+	/**
+	 * Metodo para listar os alunos;<br>
+	 * */
 	public ArrayList<Aluno> listarAlunos(){
 		String mySql = "select nome,cpf,dataNascimento,endereco,telefone,Responsavel,telefoneResponsavel from Alunos";
 		//Conectar ao Banco de Dados
@@ -19,9 +26,14 @@ public class AlunoDAO {
 		Connection id = conexao.conectar();
 		//Comando SQL
 		ArrayList<Aluno>informacoesAluno = new ArrayList<Aluno>();
+		/**
+		 * Tratamento de exceções<br> 
+		 **/
 		try {
 			PreparedStatement execucao = id.prepareStatement(mySql);;
-			//Executa o SELECTe devolve o resultado, guarda no objeto "resultado"
+			/**
+			 * Executa o SELECTe devolve o resultado, guarda no objeto "resultado"<br>
+			 **/
 			ResultSet resultadoSelect = execucao.executeQuery();
 			
 			
@@ -52,7 +64,9 @@ public class AlunoDAO {
 		return informacoesAluno;
 		
 	}
-	
+	/**
+	 * Metodo para comparar o login;<br>
+	 * */
 	public boolean compararLogin(Aluno a) {
 		String sql = "SELECT cpf, senha FROM Alunos WHERE cpf = ? AND senha = ?";
 		

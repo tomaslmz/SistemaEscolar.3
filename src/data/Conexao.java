@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+* Criacao da classe Conexao;<br>
+**/
+
 public class Conexao {
 	//Nome do banco de dados
 	private String database = "SistemaEscolar";

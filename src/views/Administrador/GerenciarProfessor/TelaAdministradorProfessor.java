@@ -37,6 +37,9 @@ public class TelaAdministradorProfessor extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdministradorProfessor() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,6 +62,10 @@ public class TelaAdministradorProfessor extends JFrame {
 		});
 		btnRegistrar.setBounds(175, 67, 89, 23);
 		contentPane.add(btnRegistrar);
+		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		
 		JButton btnVisualizar = new JButton("Visualizar");
 		btnVisualizar.addActionListener(new ActionListener() {

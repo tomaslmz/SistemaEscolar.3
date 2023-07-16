@@ -46,6 +46,9 @@ public class TelaAluno extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAluno() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 959, 436);
 		contentPane = new JPanel();
@@ -81,6 +84,10 @@ public class TelaAluno extends JFrame {
 		scrollPane.setBounds(10, 133, 923, 160);
 		contentPane.add(scrollPane);
 		
+		/**
+		 * Inicio da logica para pegar os dados do banco de dados;<br>
+		 * */
+		
 		AlunoDAO alunoDAO = new AlunoDAO();
 		
 		
@@ -101,7 +108,9 @@ public class TelaAluno extends JFrame {
 		
 		tbAlunos.setModel(modelo);
 		
-		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		
 		JButton btnVoltar = new JButton("Sair");
 		btnVoltar.addActionListener(new ActionListener() {

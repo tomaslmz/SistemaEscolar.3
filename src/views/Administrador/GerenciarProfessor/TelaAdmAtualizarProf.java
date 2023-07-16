@@ -52,6 +52,9 @@ public class TelaAdmAtualizarProf extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdmAtualizarProf() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 436);
 		contentPane = new JPanel();
@@ -84,6 +87,10 @@ public class TelaAdmAtualizarProf extends JFrame {
 		scrollPane.setBounds(0, 133, 974, 160);
 		contentPane.add(scrollPane);
 		
+		/**
+		 * Inicio da logica para pegar os dados do banco de dados;<br>
+		 * */
+		
 		AdministradorDAO admDao = new AdministradorDAO();
 		
 		DefaultTableModel modelo = (DefaultTableModel) tbProfessores.getModel();
@@ -95,6 +102,10 @@ public class TelaAdmAtualizarProf extends JFrame {
 					listaProfessores.get(i).getDataNascimento(), listaProfessores.get(i).getEndereco(), 
 					listaProfessores.get(i).getTelefone(), listaProfessores.get(i).getSalario()});
 		}
+		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {

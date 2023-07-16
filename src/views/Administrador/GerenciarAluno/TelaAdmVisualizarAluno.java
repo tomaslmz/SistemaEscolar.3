@@ -44,6 +44,10 @@ public class TelaAdmVisualizarAluno extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAdmVisualizarAluno() {
+		/**
+		 * Configuracoes da tela;<br>
+		 * */
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 500);
 		contentPane = new JPanel();
@@ -78,6 +82,10 @@ public class TelaAdmVisualizarAluno extends JFrame {
 		scrollPane.setBounds(10, 133, 964, 160);
 		contentPane.add(scrollPane);
 		
+		/**
+		 * Inicio da logica para pegar os dados do banco de dados;<br>
+		 * */
+		
 		AdministradorDAO admDao = new AdministradorDAO();
 		
 		DefaultTableModel modelo = (DefaultTableModel) tbAlunos.getModel();
@@ -89,6 +97,10 @@ public class TelaAdmVisualizarAluno extends JFrame {
 					listaAlunos.get(i).getDataNascimento(), listaAlunos.get(i).getEndereco(), 
 					listaAlunos.get(i).getTelefone(), listaAlunos.get(i).getResponsavel(), listaAlunos.get(i).getTelefone_responsavel()});
 		}
+		
+		/**
+		 * Inicio dos botoes para as funcionalidades da pagina;<br>
+		 * */
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
