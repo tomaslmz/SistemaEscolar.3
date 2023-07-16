@@ -27,5 +27,5 @@ CREATE TABLE Alunos(
     responsavel VARCHAR(100) NOT NULL,
     telefoneResponsavel VARCHAR(11) NOT NULL);
     
-INSERT INTO Administradores (usuario, senha) VALUES ("tomas", "tomas"), ("gaby", "gaby");
+INSERT INTO Administradores (usuario, senha) VALUES ("tomas", "tomas"), ("gaby", "gaby"), ("professor", "professor");
     
