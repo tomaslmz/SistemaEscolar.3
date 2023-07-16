@@ -26,6 +26,8 @@ public class TelaAluno extends JFrame {
 	private JPanel contentPane;
 	private JTable tbAlunos;
 
+	//Feito por Gaby
+	
 	/**
 	 * Criacao da tela aluno;<br>
 	 */
