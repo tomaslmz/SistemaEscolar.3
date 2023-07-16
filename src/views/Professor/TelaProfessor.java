@@ -30,8 +30,10 @@ public class TelaProfessor extends JFrame {
 	private JPanel contentPane;
 	private JTable tbProfessores;
 
+	//Feito por Gaby
+	
 	/**
-	 * Launch the application.
+	 * Criacao da tela professor;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

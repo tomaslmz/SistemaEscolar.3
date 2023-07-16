@@ -23,9 +23,9 @@ public class TelaAdmApagarProf extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tbProfessores;
-
+	//Feito por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela para apagar professores do administrador;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

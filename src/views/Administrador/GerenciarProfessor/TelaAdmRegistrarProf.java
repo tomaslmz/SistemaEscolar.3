@@ -27,9 +27,9 @@ public class TelaAdmRegistrarProf extends JFrame {
 	private JTextField txtTelefone;
 	private JTextField txtSalario;
 	private JPasswordField pswdSenha;
-
+	//Feito por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela de registrar professor do administrador;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

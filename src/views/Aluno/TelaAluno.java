@@ -27,7 +27,7 @@ public class TelaAluno extends JFrame {
 	private JTable tbAlunos;
 
 	/**
-	 * Launch the application.
+	 * Criacao da tela aluno;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

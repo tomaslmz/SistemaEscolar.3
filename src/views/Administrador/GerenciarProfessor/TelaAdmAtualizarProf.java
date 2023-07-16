@@ -31,9 +31,9 @@ public class TelaAdmAtualizarProf extends JFrame {
 	private JTextField txtEndereco;
 	private JTextField txtTelefone;
 	private JTextField txtSalario;
-
+	//Feito por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela para atualizar dados dos professores do administrador;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

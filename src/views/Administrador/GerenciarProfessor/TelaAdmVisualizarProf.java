@@ -24,8 +24,9 @@ public class TelaAdmVisualizarProf extends JFrame {
 	private JPanel contentPane;
 	private JTable tbProfessores;
 
+	//Criado por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela de visualização dos professores do administrador;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

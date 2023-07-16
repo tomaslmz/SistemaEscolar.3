@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TelaAdministrador extends JFrame {
+	//Feito por Tomas
 	/**
 	 * Criacao da classe TelaAdministrador onde sera entregue as funcoes para escolher;<br>
 	 * */

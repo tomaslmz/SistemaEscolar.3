@@ -23,6 +23,7 @@ import javax.swing.JButton;
  * Criacao da classe LoginAdministrador onde sera inserido os dados para realizar o login;<br>
  * */
 public class LoginAdministrador extends JFrame {
+	//Feito por Gaby
 
 	private JPanel contentPane;
 	private JTextField txtUser;

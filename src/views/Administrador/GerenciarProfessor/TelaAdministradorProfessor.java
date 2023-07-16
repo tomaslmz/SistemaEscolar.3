@@ -16,9 +16,9 @@ import java.awt.event.ActionEvent;
 public class TelaAdministradorProfessor extends JFrame {
 
 	private JPanel contentPane;
-
+	//Feito por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela de menu de acoes com professor do administrador;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

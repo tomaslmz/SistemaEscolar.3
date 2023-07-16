@@ -1,7 +1,7 @@
 package models;
 
 /**Criacao da classe professor onde iremos inserir os dados. <br>*/
-public class Professor extends Pessoa {
+public class Professor extends Pessoa {//Feito por Tomas
 	/**<br>Salario do professor;*/
 	private float salario;
 	

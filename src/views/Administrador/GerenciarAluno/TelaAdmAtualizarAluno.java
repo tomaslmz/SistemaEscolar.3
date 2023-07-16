@@ -33,9 +33,9 @@ public class TelaAdmAtualizarAluno extends JFrame {
 	private JTextField txtTelefone;
 	private JTextField txtResponsavel;
 	private JTextField txtTelefoneResponsavel;
-
+	//Feito por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela para atualizar os dados do aluno;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

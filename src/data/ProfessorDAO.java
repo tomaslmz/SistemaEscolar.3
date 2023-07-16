@@ -14,7 +14,7 @@ import models.Professor;
 /**
 * Criacao da classe ProfessorDAO;<br>
 **/
-public class ProfessorDAO {
+public class ProfessorDAO {//Feito por Tomas
 	
 	/**
 	 * Metodo para listar os professores;<br>

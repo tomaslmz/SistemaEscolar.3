@@ -1,7 +1,7 @@
 package models;
 
 /**Criacao da classe Administrador que tera a permissao para registrar professores e alunos.*/
-public class Administrador {
+public class Administrador {//Feito por Tomas
 	/**<br>Os seguintes dados serao de login: */
 	private String usuario = "admin";
 	private String senha = "admin";

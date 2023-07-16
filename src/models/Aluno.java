@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 /**Criacao da classe aluno onde irá ser inserido os dados abaixo;<br>*/
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa {//Feito por Gaby
 	/**<br>Telefone do Aluno;*/
     private String telefone_aluno = "(47) 9 12345678";//(Telefone,E-mail)
     /**<br>Nome do Responsável;*/

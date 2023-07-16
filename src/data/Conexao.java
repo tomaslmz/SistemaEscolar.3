@@ -8,7 +8,7 @@ import java.sql.SQLException;
 * Criacao da classe Conexao;<br>
 **/
 
-public class Conexao {
+public class Conexao {//Feito por Tomas
 	//Nome do banco de dados
 	private String database = "SistemaEscolar";
 	//Login do usuário para o banco de dados

@@ -23,9 +23,9 @@ public class TelaAdmVisualizarAluno extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tbAlunos;
-
+	//Feito por Tomas
 	/**
-	 * Launch the application.
+	 * Criacao da tela para visualizar alunos do administrador;<br>
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

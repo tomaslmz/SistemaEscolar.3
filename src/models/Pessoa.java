@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
-public class Pessoa {
+public class Pessoa {//Feito por Tomas
 	private int id;
 	/**Aqui iremos inserir os seguintes dados de uma pessoa:<br> Nome da pessoa;*/
 	private String nome;
